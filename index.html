@@ -59,11 +59,94 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:-.01em;font-size:16px}
 .brand-badge{width:34px;height:34px;border-radius:10px;background:var(--fg);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;letter-spacing:-.02em}
-.nav ul{display:flex;gap:28px;list-style:none;padding:0;font-size:14px;font-weight:500;color:var(--mut)}
-.nav ul a{transition:color .2s}
-.nav ul a:hover{color:var(--fg)}
+.nav-links{display:flex;gap:28px;list-style:none;padding:0;font-size:14px;font-weight:500;color:var(--mut)}
+.nav-links a{transition:color .2s}
+.nav-links a:hover{color:var(--fg)}
+.nav-actions{display:flex;align-items:center;gap:10px}
 .tg{border:1px solid var(--line);background:var(--card);color:var(--fg);width:40px;height:40px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:.2s}
 .tg:hover{border-color:var(--fg);transform:scale(1.05)}
+.menu-btn{
+  display:none;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:var(--card);
+  color:var(--fg);
+  cursor:pointer;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  padding:0;
+  transition:.2s ease;
+}
+.menu-btn:hover{border-color:var(--fg);transform:scale(1.05)}
+.menu-btn .bar{
+  width:18px;
+  height:2px;
+  background:currentColor;
+  border-radius:2px;
+  transition:transform .3s ease, opacity .3s ease;
+}
+.menu-btn.open .bar:nth-child(1){
+  transform:translateY(7px) rotate(45deg);
+}
+.menu-btn.open .bar:nth-child(2){
+  opacity:0;
+}
+.menu-btn.open .bar:nth-child(3){
+  transform:translateY(-7px) rotate(-45deg);
+}
+.mobile-menu{
+  display:none;
+  position:absolute;
+  top:100%;
+  left:0;
+  width:100%;
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
+  box-shadow:0 20px 30px rgba(0,0,0,0.12);
+  padding:16px 0 24px;
+  transform:translateY(-10px);
+  opacity:0;
+  pointer-events:none;
+  transition:transform .25s ease, opacity .25s ease;
+  z-index:25;
+}
+.mobile-menu.open{
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:auto;
+}
+.mobile-menu ul{
+  list-style:none;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.mobile-menu li a{
+  display:block;
+  padding:12px 18px;
+  border-radius:12px;
+  font-size:16px;
+  font-weight:600;
+  color:var(--fg);
+  transition:background .2s;
+}
+.mobile-menu li a:hover{
+  background:var(--card);
+}
+.mobile-menu .m-hire{
+  margin-top:10px;
+  padding-top:14px;
+  border-top:1px solid var(--line);
+}
+.mobile-menu .m-hire a{
+  text-align:center;
+  display:block;
+}
 section{padding:96px 0;border-bottom:1px solid var(--line)}
 .lb{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-bottom:18px}
 .pulse-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 rgba(34,197,94,0.4);animation:pulse-glow 2s infinite}
@@ -282,7 +365,9 @@ footer .w{display:flex;justify-content:space-between;align-items:center;flex-wra
 
 /* RESPONSIVE */
 @media(max-width:880px){
-  .nav ul{display:none}
+  .nav-links{display:none}
+  .menu-btn{display:flex}
+  .mobile-menu{display:block}
   .hero{grid-template-columns:1fr;gap:40px;padding:48px 0}
   .about{grid-template-columns:1fr;gap:24px}
   .ph{max-width:360px;margin:0 auto}
@@ -307,7 +392,7 @@ footer .w{display:flex;justify-content:space-between;align-items:center;flex-wra
     <div class="brand-badge">BP</div>
     <span>Bhawani.dev</span>
   </a>
-  <ul>
+  <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
@@ -315,8 +400,29 @@ footer .w{display:flex;justify-content:space-between;align-items:center;flex-wra
     <li><a href="#freelance">Freelance</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="tg" id="tg" aria-label="Toggle theme" title="Toggle theme">◑</button>
+  <div class="nav-actions">
+    <button class="tg" id="tg" aria-label="Toggle theme" title="Toggle theme">◑</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle mobile menu" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
 </div>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+  <div class="w">
+    <ul>
+      <li><a href="#about">01 — About</a></li>
+      <li><a href="#skills">02 — Skills</a></li>
+      <li><a href="#experience">03 — Experience</a></li>
+      <li><a href="#projects">04 — Projects</a></li>
+      <li><a href="#freelance">05 — Freelance</a></li>
+      <li><a href="#education">06 — Education</a></li>
+      <li><a href="#contact">07 — Contact</a></li>
+      <li class="m-hire"><a class="b p" href="mailto:bhawanishankarpareek301@gmail.com">Get in touch ✉</a></li>
+    </ul>
+  </div>
+</nav>
 </header>
 
 <main id="top">
@@ -643,6 +749,32 @@ $("tg").onclick = function(){
   r.setAttribute("data-theme", isDark ? "light" : "dark");
   $("tg").innerHTML = isDark ? "◐" : "◑";
 };
+
+// MOBILE MENU TOGGLE
+var menuBtn = $("menuBtn");
+var mobileMenu = $("mobileMenu");
+if(menuBtn && mobileMenu){
+  menuBtn.onclick = function(e){
+    e.stopPropagation();
+    var isOpen = mobileMenu.classList.toggle("open");
+    menuBtn.classList.toggle("open", isOpen);
+    menuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  };
+  mobileMenu.querySelectorAll("a").forEach(function(link){
+    link.onclick = function(){
+      mobileMenu.classList.remove("open");
+      menuBtn.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded", "false");
+    };
+  });
+  document.addEventListener("click", function(e){
+    if(!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)){
+      mobileMenu.classList.remove("open");
+      menuBtn.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded", "false");
+    }
+  });
+}
 </script>
 </body>
 </html>
