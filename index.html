@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bhawani Shankar Pareek — Software Developer</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230a0a0a'/><text x='16' y='21' font-family='sans-serif' font-weight='800' font-size='14' text-anchor='middle' fill='%23ffffff'>BP</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;
+  --fg:#0a0a0a;
+  --mut:#666666;
+  --line:#e5e5e5;
+  --card:#f8f9fa;
+  --card-hover:#f0f1f3;
+  --accent:#2563eb;
+  --success:#16a34a;
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0a0a0a;
+    --fg:#f5f5f5;
+    --mut:#9ca3af;
+    --line:#222222;
+    --card:#141414;
+    --card-hover:#1c1c1c;
+    --accent:#3b82f6;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0a0a0a;
+  --fg:#f5f5f5;
+  --mut:#9ca3af;
+  --line:#222222;
+  --card:#141414;
+  --card-hover:#1c1c1c;
+  --accent:#3b82f6;
+  color-scheme:dark;
+}
+html{scroll-behavior:smooth;scroll-padding-top:calc(76px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.w{max-width:1120px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--bg);border-bottom:1px solid var(--line);backdrop-filter:blur(8px);background:rgba(255,255,255,0.92)}
+:root[data-theme="dark"] header{background:rgba(10,10,10,0.92)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:40}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:-.01em;font-size:16px}
+.brand-badge{width:34px;height:34px;border-radius:10px;background:var(--fg);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;letter-spacing:-.02em}
+.nav ul{display:flex;gap:28px;list-style:none;padding:0;font-size:14px;font-weight:500;color:var(--mut)}
+.nav ul a{transition:color .2s}
+.nav ul a:hover{color:var(--fg)}
+.tg{border:1px solid var(--line);background:var(--card);color:var(--fg);width:40px;height:40px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:.2s}
+.tg:hover{border-color:var(--fg);transform:scale(1.05)}
+section{padding:96px 0;border-bottom:1px solid var(--line)}
+.lb{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-bottom:18px}
+.pulse-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 rgba(34,197,94,0.4);animation:pulse-glow 2s infinite}
+@keyframes pulse-glow{0%{box-shadow:0 0 0 0 rgba(34,197,94,0.7)}70%{box-shadow:0 0 0 8px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+h2{font-size:clamp(28px,4.5vw,42px);font-weight:700;letter-spacing:-.03em;line-height:1.15;margin-bottom:40px}
+
+/* HERO SECTION */
+.hero{display:grid;grid-template-columns:1.35fr 1fr;gap:56px;align-items:center;padding:80px 0 88px}
+h1{font-size:clamp(44px,7.5vw,90px);font-weight:800;letter-spacing:-.05em;line-height:.98}
+.role{font-family:var(--mono);font-size:14px;color:var(--mut);margin:24px 0 14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.role-dot{color:var(--line)}
+.lead{max-width:540px;color:var(--mut);font-size:18px;line-height:1.6}
+.btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.b{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;border:1px solid var(--fg);font-size:14px;font-weight:500;transition:.2s;cursor:pointer}
+.b.p{background:var(--fg);color:var(--bg)}
+.b.p:hover{opacity:.85;transform:translateY(-1px)}
+.b:not(.p):hover{background:var(--card);border-color:var(--fg)}
+
+/* HERO PORTRAIT PHOTO */
+.ph{
+  position:relative;
+  aspect-ratio:4/5;
+  border-radius:24px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:var(--card);
+  box-shadow:0 20px 40px -15px rgba(0,0,0,0.12);
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+.ph:hover{
+  transform:translateY(-4px);
+  box-shadow:0 28px 50px -15px rgba(0,0,0,0.18);
+}
+.ph img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+  transition:transform .5s ease;
+}
+.ph:hover img{
+  transform:scale(1.03);
+}
+.ph-badge{
+  position:absolute;
+  bottom:16px;
+  left:16px;
+  right:16px;
+  background:rgba(10,10,10,0.8);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  color:#ffffff;
+  padding:10px 16px;
+  border-radius:999px;
+  font-size:12.5px;
+  font-family:var(--mono);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border:1px solid rgba(255,255,255,0.15);
+}
+.ph-badge .txt{display:flex;align-items:center;gap:8px;font-weight:500}
+.ph-badge .coords{opacity:.65;font-size:11px}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:18px;margin-top:8px;background:var(--bg)}
+.st{padding:28px 24px;border-right:1px solid var(--line);transition:background .2s}
+.st:hover{background:var(--card)}
+.st:last-child{border:0}
+.st b{display:block;font-size:38px;font-weight:700;letter-spacing:-.03em}
+.st span{color:var(--mut);font-size:13px;font-weight:500}
+
+/* ABOUT */
+.about{display:grid;grid-template-columns:1fr 1.4fr;gap:56px;align-items:start}
+.about p{font-size:18.5px;color:var(--mut);line-height:1.75}
+
+/* SKILLS */
+.sk{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--line)}
+.sr{padding:24px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:160px 1fr;gap:20px;align-items:start}
+.sr:nth-child(odd){padding-right:28px}
+.sr:nth-child(even){padding-left:28px;border-left:1px solid var(--line)}
+.sr h3{font-size:13.5px;font-family:var(--mono);color:var(--mut);font-weight:500}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:13px;background:var(--card);font-weight:500;transition:.2s;display:inline-flex;align-items:center;gap:6px}
+.tags span:hover{border-color:var(--fg);transform:translateY(-1px)}
+
+/* EXPERIENCE */
+.xp{border-top:1px solid var(--line)}
+.x{display:grid;grid-template-columns:220px 1fr;gap:36px;padding:36px 0;border-bottom:1px solid var(--line);transition:background .2s}
+.x time{font-family:var(--mono);font-size:13px;color:var(--mut);padding-top:4px;display:block}
+.x-content{display:flex;flex-direction:column;gap:12px}
+.x-header{display:flex;align-items:center;gap:14px}
+.x-logo{width:42px;height:42px;border-radius:12px;background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;font-family:var(--mono);flex-shrink:0;color:var(--fg)}
+.x h3{font-size:21px;font-weight:600;letter-spacing:-.02em}
+.x h4{font-weight:400;color:var(--mut);font-size:15px}
+.x ul{padding-left:18px;color:var(--mut);font-size:15px;line-height:1.65}
+.x li{margin-bottom:6px}
+
+/* PROJECTS GRID & CARDS */
+.pg{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.pc{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--card);display:flex;flex-direction:column;transition:.3s ease;box-shadow:0 4px 20px -6px rgba(0,0,0,0.05)}
+.pc:hover{transform:translateY(-6px);border-color:var(--fg);box-shadow:0 18px 36px -12px rgba(0,0,0,0.12)}
+.cv{
+  position:relative;
+  aspect-ratio:16/9;
+  border-bottom:1px solid var(--line);
+  background:var(--bg);
+  overflow:hidden;
+}
+.cv img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .4s ease;
+}
+.pc:hover .cv img{
+  transform:scale(1.05);
+}
+.cv-badge{
+  position:absolute;
+  top:14px;
+  left:14px;
+  background:rgba(10,10,10,0.78);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  color:#ffffff;
+  padding:4px 12px;
+  border-radius:999px;
+  font-size:11.5px;
+  font-family:var(--mono);
+  font-weight:500;
+  border:1px solid rgba(255,255,255,0.18);
+  letter-spacing:.02em;
+}
+.pb{padding:26px;display:flex;flex-direction:column;gap:12px;flex:1}
+.pb h3{font-size:20px;font-weight:700;letter-spacing:-.02em}
+.pb p{color:var(--mut);font-size:14.5px;line-height:1.6;flex:1}
+.pb .tags-wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:6px;padding-top:12px;border-top:1px solid var(--line)}
+.pb .l{font-family:var(--mono);font-size:12.5px;color:var(--mut)}
+.pb a.link-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  color:var(--fg);
+  font-weight:600;
+  font-size:13px;
+  padding:6px 14px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:var(--bg);
+  transition:.2s;
+}
+.pb a.link-btn:hover{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+
+/* FREELANCE CLIENTS */
+.fl{border-top:1px solid var(--line)}
+.f{
+  display:grid;
+  grid-template-columns:84px 1fr auto;
+  gap:22px;
+  align-items:center;
+  padding:20px 14px;
+  border-bottom:1px solid var(--line);
+  border-radius:14px;
+  transition:.25s ease;
+}
+.f:hover{
+  background:var(--card);
+  padding-left:20px;
+  transform:translateX(4px);
+}
+.f-thumb{
+  width:84px;
+  height:58px;
+  border-radius:10px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:var(--card);
+  flex-shrink:0;
+}
+.f-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .3s ease;
+}
+.f:hover .f-thumb img{
+  transform:scale(1.08);
+}
+.f-body{display:flex;flex-direction:column;gap:4px}
+.f-num{font-family:var(--mono);font-size:11px;color:var(--mut);letter-spacing:.08em}
+.f h3{font-size:18px;font-weight:600;letter-spacing:-.01em}
+.f p{color:var(--mut);font-size:14px}
+.f-action{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;font-family:var(--mono);color:var(--mut);transition:color .2s}
+.f:hover .f-action{color:var(--fg)}
+.f-action em{font-style:normal;font-size:18px;transition:transform .2s}
+.f:hover .f-action em{transform:translate(2px,-2px)}
+
+/* EDUCATION */
+.ed{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.ec{border:1px solid var(--line);border-radius:18px;padding:26px;background:var(--card);transition:.2s}
+.ec:hover{transform:translateY(-3px);border-color:var(--fg)}
+.ec time{font-family:var(--mono);font-size:12px;color:var(--mut)}
+.ec h3{font-size:17px;margin:10px 0 6px;font-weight:600;line-height:1.35}
+.ec p{color:var(--mut);font-size:14px}
+
+/* CONTACT */
+.ct{text-align:center;padding:110px 0}
+.ct h2{font-size:clamp(36px,7vw,72px);font-weight:800;letter-spacing:-.05em;margin-bottom:24px}
+.ct .btns{justify-content:center}
+
+footer{padding:32px 0;color:var(--mut);font-size:13px;border-top:1px solid var(--line)}
+footer .w{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+
+/* RESPONSIVE */
+@media(max-width:880px){
+  .nav ul{display:none}
+  .hero{grid-template-columns:1fr;gap:40px;padding:48px 0}
+  .about{grid-template-columns:1fr;gap:24px}
+  .ph{max-width:360px;margin:0 auto}
+  .stats{grid-template-columns:1fr 1fr}
+  .st:nth-child(2){border-right:0}
+  .st:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .sk,.pg,.ed{grid-template-columns:1fr}
+  .sr:nth-child(even){padding-left:0;border-left:0}
+  .sr:nth-child(odd){padding-right:0}
+  .sr{grid-template-columns:1fr;gap:10px}
+  .x{grid-template-columns:1fr;gap:12px}
+  .f{grid-template-columns:70px 1fr auto;gap:14px;padding:16px 8px}
+  .f-thumb{width:70px;height:50px}
+  section{padding:72px 0}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="w nav">
+  <a href="#top" class="brand" aria-label="Home">
+    <div class="brand-badge">BP</div>
+    <span>Bhawani.dev</span>
+  </a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#freelance">Freelance</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="tg" id="tg" aria-label="Toggle theme" title="Toggle theme">◑</button>
+</div>
+</header>
+
+<main id="top">
+<!-- HERO SECTION -->
+<div class="w hero">
+  <div>
+    <p class="lb"><span class="pulse-dot"></span> Available for opportunities</p>
+    <h1>Bhawani<br>Shankar<br>Pareek.</h1>
+    <p class="role">
+      <span>Software Developer</span>
+      <span class="role-dot">•</span>
+      <span>.NET &amp; Full Stack</span>
+      <span class="role-dot">•</span>
+      <span>Jaipur, India</span>
+    </p>
+    <p class="lead">I build scalable web applications, REST APIs and cross-platform apps — clean, fast and production-ready.</p>
+    <div class="btns">
+      <a class="b p" href="#projects">View work ↓</a>
+      <a class="b" href="mailto:bhawanishankarpareek301@gmail.com">Get in touch ✉</a>
+    </div>
+  </div>
+  
+  <!-- DEVELOPER PHOTO -->
+  <div class="ph" role="img" aria-label="Portrait of Bhawani Shankar Pareek">
+    <img src="assets/images/profile.jpg" alt="Bhawani Shankar Pareek" loading="eager" id="heroPhoto" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80';">
+    <div class="ph-badge">
+      <div class="txt"><span class="pulse-dot"></span> .NET Developer</div>
+      <div class="coords">26.9124° N, 75.7873° E</div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="w" style="padding-bottom:96px">
+  <div class="stats">
+    <div class="st"><b>1.5+</b><span>Years of experience</span></div>
+    <div class="st"><b>10+</b><span>Projects shipped</span></div>
+    <div class="st"><b>3</b><span>Companies</span></div>
+    <div class="st"><b>6</b><span>Freelance websites</span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+<div class="w about">
+  <div>
+    <p class="lb">01 — About</p>
+    <h2>Code that scales,<br>design that stays simple.</h2>
+  </div>
+  <p>Software Developer with 1.5 years of experience building web applications and REST APIs using .NET Core, ASP.NET MVC and C#, with frontend development in HTML, CSS, JavaScript and Bootstrap. Experienced in developing admin panels, API integrations and database-driven modules. Strong problem-solving skills with a passion for building scalable, production-ready applications.</p>
+</div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+<div class="w">
+  <p class="lb">02 — Skills</p>
+  <h2>Tools I work with.</h2>
+  <div class="sk" id="sk"></div>
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+<div class="w">
+  <p class="lb">03 — Experience</p>
+  <h2>Where I’ve worked.</h2>
+  <div class="xp" id="xp"></div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+<div class="w">
+  <p class="lb">04 — Selected projects</p>
+  <h2>Things I’ve built.</h2>
+  <div class="pg" id="pg"></div>
+</div>
+</section>
+
+<!-- FREELANCE -->
+<section id="freelance">
+<div class="w">
+  <p class="lb">05 — Freelance</p>
+  <h2>Websites for clients.</h2>
+  <div class="fl" id="fl"></div>
+</div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+<div class="w">
+  <p class="lb">06 — Education</p>
+  <h2>Background.</h2>
+  <div class="ed">
+    <div class="ec">
+      <time>2022 — 2026</time>
+      <h3>B.Tech, Computer Science &amp; Engineering</h3>
+      <p>Rajasthan Institute of Engineering &amp; Technology, Jaipur</p>
+    </div>
+    <div class="ec">
+      <time>2021 — 2022</time>
+      <h3>Higher Secondary (12th)</h3>
+      <p>SBN School, Sahawa</p>
+    </div>
+    <div class="ec">
+      <time>2019 — 2020</time>
+      <h3>Secondary (10th)</h3>
+      <p>SBN School, Sahawa</p>
+    </div>
+  </div>
+  <p style="margin-top:28px;color:var(--mut);font-size:14px">Languages — Hindi (Native) • English (Professional)</p>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="ct" style="border:0">
+<div class="w">
+  <p class="lb">07 — Contact</p>
+  <h2>Let’s build<br>something together.</h2>
+  <div class="btns">
+    <a class="b p" href="mailto:bhawanishankarpareek301@gmail.com">bhawanishankarpareek301@gmail.com</a>
+    <a class="b" href="tel:+918619434124">+91 86194 34124</a>
+    <a class="b" href="https://www.linkedin.com/in/bhawani-shankar-pareek-b0b0b5313" target="_blank" rel="noopener">LinkedIn ↗</a>
+  </div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="w">
+  <span>© 2026 Bhawani Shankar Pareek</span>
+  <span>Vaishali Nagar, Jaipur, Rajasthan</span>
+</div>
+</footer>
+
+<script>
+var $ = function(i){ return document.getElementById(i); };
+
+// SKILLS
+var SK = [
+  ["Backend", ".NET Core,ASP.NET MVC,C#,REST APIs"],
+  ["Frontend", "HTML5,CSS3,JavaScript,Bootstrap 5,Angular,WordPress"],
+  ["Mobile", "Flutter"],
+  ["Desktop", "Electron"],
+  ["Database", "MySQL,Microsoft SQL Server"],
+  ["Tools", "Visual Studio,Android Studio,Git,Postman,Windows Server"],
+  ["Concepts", "CRUD,MVC Architecture,API Integration,SaaS,Multi-Tenant DB,System Design"],
+  ["Practice", "Debugging,Deployment Support"]
+];
+
+$("sk").innerHTML = SK.map(function(s){
+  return '<div class="sr"><h3>' + s[0] + '</h3><div class="tags">' + 
+    s[1].split(",").map(function(t){ return '<span>' + t + '</span>'; }).join("") + 
+    '</div></div>';
+}).join("");
+
+// EXPERIENCE
+var XP = [
+  ["Sep 2026 — Present", "Software Developer", "Atal Web Solution, Jaipur", "AWS", [
+    "Developed and integrated REST APIs for web and mobile applications.",
+    "Contributed to mobile app development and feature enhancements.",
+    "Integrated frontend components with backend APIs.",
+    "Supported API integration, debugging and enhancements."
+  ]],
+  ["Sep 2025 — Jun 2026", "Dot Net Developer", "Softhunters Technology Pvt. Ltd., Jaipur", "ST", [
+    "Developed scalable web apps using ASP.NET MVC and .NET Core.",
+    "Built and integrated REST APIs for application modules.",
+    "Enhanced UI/UX with Bootstrap and JavaScript for responsive design.",
+    "Worked with MSSQL for CRUD operations and validations."
+  ]],
+  ["Feb 2025 — Aug 2025", "Associate Software Developer", "Shree Tadkeshwar Agro Food Product", "STA", [
+    "Developed an Admin Panel and Client Application for internal operations.",
+    "Designed and integrated REST APIs for multiple workflows.",
+    "Contributed to database design and API-driven structure.",
+    "Implemented forms, validations and performance-optimized pages."
+  ]]
+];
+
+$("xp").innerHTML = XP.map(function(x){
+  return '<div class="x"><time>' + x[0] + '</time><div class="x-content"><div class="x-header"><div class="x-logo">' + x[3] + '</div><div><h3>' + x[1] + '</h3><h4>' + x[2] + '</h4></div></div><ul>' + 
+    x[4].map(function(i){ return '<li>' + i + '</li>'; }).join("") + 
+    '</ul></div></div>';
+}).join("");
+
+// PROJECTS WITH PHOTOS
+var P = [
+  {
+    title: "Task & Earn",
+    tech: "Flutter • Electron",
+    desc: "Mobile app focused on task-based earning, with API integration and a desktop admin panel built in Electron.",
+    link: "https://play.google.com/store/apps/details?id=com.atalweb.earndoz",
+    action: "Google Play ↗",
+    image: "assets/images/projects/task-and-earn.jpg",
+    tag: "Mobile & Desktop"
+  },
+  {
+    title: "Shree Tadkeshwar",
+    tech: "ASP.NET MVC • SQL Server",
+    desc: "Complete admin panel with CRM and HRMS modules for agro-food business operations, plus client application support.",
+    link: "",
+    action: "",
+    image: "assets/images/projects/shree-tadkeshwar.jpg",
+    tag: "Enterprise Admin Panel"
+  },
+  {
+    title: "Hotres",
+    tech: "ASP.NET Core • Bootstrap 5",
+    desc: "Restaurant & cafe management: POS billing, menu, inventory tracking, reporting and role-based access.",
+    link: "",
+    action: "",
+    image: "assets/images/projects/hotres.jpg",
+    tag: "Restaurant POS"
+  },
+  {
+    title: "Medurance",
+    tech: "REST APIs • SQL Server",
+    desc: "Healthcare platform for hospital and patient records; APIs and optimized stored procedures for web and mobile.",
+    link: "",
+    action: "",
+    image: "assets/images/projects/medurance.jpg",
+    tag: "Healthcare Platform"
+  },
+  {
+    title: "Shutterupp.in",
+    tech: "Frontend • APIs • DB",
+    desc: "Business listing platform to add, view and manage business profiles with clean UI and scalable API design.",
+    link: "",
+    action: "",
+    image: "assets/images/projects/shutterupp.jpg",
+    tag: "Directory & Listings"
+  },
+  {
+    title: "Multi-tenant SaaS",
+    tech: "System Design • Cloud",
+    desc: "Experience in SaaS application development, tenant isolation and multi-tenant database architecture.",
+    link: "",
+    action: "",
+    image: "assets/images/projects/multi-tenant-saas.jpg",
+    tag: "Cloud Architecture"
+  }
+];
+
+$("pg").innerHTML = P.map(function(p){
+  return '<article class="pc">' +
+    '<div class="cv">' +
+      '<img src="' + p.image + '" alt="' + p.title + '" loading="lazy" onerror="this.onerror=null;this.style.opacity=0.3;">' +
+      '<span class="cv-badge">' + p.tag + '</span>' +
+    '</div>' +
+    '<div class="pb">' +
+      '<h3>' + p.title + '</h3>' +
+      '<p>' + p.desc + '</p>' +
+      '<div class="tags-wrap">' +
+        '<span class="l">' + p.tech + '</span>' +
+        (p.link ? '<a class="link-btn" href="' + p.link + '" target="_blank" rel="noopener">' + p.action + '</a>' : '') +
+      '</div>' +
+    '</div>' +
+  '</article>';
+}).join("");
+
+// FREELANCE WEBSITES WITH PHOTOS
+var F = [
+  {
+    title: "Aya Traders",
+    desc: "Business website • WordPress",
+    link: "https://ayatrader.com/",
+    image: "assets/images/freelance/aya-traders.jpg"
+  },
+  {
+    title: "Jaikosh Lifts",
+    desc: "Custom HTML/CSS/JS website + CRM system",
+    link: "https://jaikoshlifts.com/",
+    image: "assets/images/freelance/jaikosh-lifts.jpg"
+  },
+  {
+    title: "Accountune",
+    desc: "Website • WordPress",
+    link: "https://accountune.com/",
+    image: "assets/images/freelance/accountune.jpg"
+  },
+  {
+    title: "Sanjivani Hospital, Taranagar",
+    desc: "Website & appointment booking system",
+    link: "https://sanjivanihospitaltaranagar.com/",
+    image: "assets/images/freelance/sanjivani-hospital.jpg"
+  },
+  {
+    title: "RYD Studio",
+    desc: "Custom-coded website",
+    link: "https://rydstudio.in/",
+    image: "assets/images/freelance/ryd-studio.jpg"
+  },
+  {
+    title: "Padmini Rao",
+    desc: "Website development & updates",
+    link: "https://padminirao.com/",
+    image: "assets/images/freelance/padmini-rao.jpg"
+  }
+];
+
+$("fl").innerHTML = F.map(function(f, i){
+  return '<a class="f" href="' + f.link + '" target="_blank" rel="noopener">' +
+    '<div class="f-thumb">' +
+      '<img src="' + f.image + '" alt="' + f.title + '" loading="lazy">' +
+    '</div>' +
+    '<div class="f-body">' +
+      '<span class="f-num">0' + (i+1) + '</span>' +
+      '<h3>' + f.title + '</h3>' +
+      '<p>' + f.desc + '</p>' +
+    '</div>' +
+    '<div class="f-action">' +
+      '<span>Visit</span>' +
+      '<em>↗</em>' +
+    '</div>' +
+  '</a>';
+}).join("");
+
+// THEME TOGGLE
+$("tg").onclick = function(){
+  var r = document.documentElement;
+  var isDark = r.getAttribute("data-theme") ? 
+    r.getAttribute("data-theme") === "dark" : 
+    matchMedia("(prefers-color-scheme:dark)").matches;
+  r.setAttribute("data-theme", isDark ? "light" : "dark");
+  $("tg").innerHTML = isDark ? "◐" : "◑";
+};
+</script>
+</body>
+</html>
